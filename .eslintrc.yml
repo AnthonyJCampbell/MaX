@@ -1,0 +1,73 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+env:
+  es6: true
+# Duplicated for Typescript, below.
+extends:
+  - "eslint:recommended"
+  - "plugin:react/recommended"
+  - "plugin:security/recommended"
+  - "plugin:jsx-a11y/recommended"
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parser: "@typescript-eslint/parser"
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2018
+  sourceType: "module"
+# Duplicated for Typescript, below.
+plugins:
+  - jest
+  - react
+  - security
+  - jsx-a11y
+  - react-hooks
+  - header
+rules:
+  # Disable this rule for variables beginning with an underscore.
+  no-unused-vars:
+    - error
+    - argsIgnorePattern: "^_"
+  # Disable this rule because hoisting occurs within every block scope
+  no-use-before-define:
+    - error
+    - functions: false
+      variables: false
+      classes: false
+  no-var:
+    - error
+  # Check if all relevant codebase files have the appropriate header
+  header/header:
+    - 2
+    - tools/copyright/codebase-header
+settings:
+  react:
+    version: "detect"
+overrides:
+  - files: ["*.ts", "*.tsx"]
+    extends:
+      - "eslint:recommended"
+      - "plugin:react/recommended"
+      - "plugin:security/recommended"
+      - "plugin:jsx-a11y/recommended"
+      - "plugin:@typescript-eslint/eslint-recommended"
+      - "plugin:@typescript-eslint/recommended"
+    plugins:
+      - jest
+      - react
+      - security
+      - jsx-a11y
+      - "@typescript-eslint"
+      - header
+    rules:
+      # This rule doesn't work on TypeScript files, use the TypeScript specific one instead
+      no-unused-vars: off
+      "@typescript-eslint/no-unused-vars":
+        - error
+      "@typescript-eslint/no-use-before-define": off
+      "@typescript-eslint/no-floating-promises": "error"
+      # We don't use PropTypes in TypeScript
+      react/prop-types: off
+    parserOptions:
+      project: "./tsconfig.eslint.json"

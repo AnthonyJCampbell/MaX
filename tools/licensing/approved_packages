@@ -1,0 +1,64 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+# List of specifically approved packages, which will can be ignored in smoke CI tests.
+#
+# Do not update this list without explicit consultation of the third-party rep!
+#  - TODO Metacom link.
+#
+# When you do extend this list you must include:
+#  - The specific version of the package you are excluding
+#  - A comment covering why an exclusion is made
+
+# Approved usage of Creative Commons license.
+caniuse-lite@1.0.30001135
+caniuse-lite@1.0.30001140
+caniuse-lite@1.0.30001191
+caniuse-lite@1.0.30001192
+caniuse-lite@1.0.30001221
+caniuse-lite@1.0.30001230
+caniuse-lite@1.0.30001241
+caniuse-lite@1.0.30001243
+spdx-exceptions@2.1.0
+spdx-exceptions@2.2.0
+spdx-exceptions@2.3.0
+spdx-ranges@2.1.1
+
+# language-subtag-registry: Approved use of Open Data Commons License
+language-subtag-registry@0.3.20
+language-subtag-registry@0.3.21
+
+# Packages with incorrect metadata, actually Public Domain
+cycle@1.0.3
+jsonify@0.0.0
+
+# Packages with incorrect metadata, actually MIT
+pako@1.0.11
+map-stream@0.1.0
+
+# MPL-2.0 Packages
+# Packages licensed under the Mozilla Public License can be used as long as we do not edit any of their source code.
+# See [https://metacom2.metaswitch.com/confluence/x/IustAg] for more details
+axe-core@3.5.5
+axe-core@4.1.1
+axe-core@4.1.2
+axe-core@4.2.2
+axe-core@4.2.3
+@axe-core/react@4.1.0
+@axe-core/react@4.1.1
+@axe-core/react@4.1.2
+@axe-core/react@4.2.2
+
+# Custom ESLint plugin
+# We've written a custom plugin for ESLint. This is kept as a mini-package within the codebase and
+# is "installed", meaning it ends up in `package.json`. However it doesn't have or need a license
+# so exculde it here
+eslint-plugin-electron-ui
+
+# HMW/TAL TODO
+# This uses a Python license: https://github.com/nodeca/argparse
+# TAL has been looking into this with legal for another package, but he is currently away. Blocking
+# the merge of the Electron upgrade for a week for this reason only doesn't seem sensible, so allow
+# it for now.
+#
+# Henry to agree next steps with Tom when he's back. Reminder here:
+# https://jira.metaswitch.com/browse/DUIR-4934
+argparse@2.0.1

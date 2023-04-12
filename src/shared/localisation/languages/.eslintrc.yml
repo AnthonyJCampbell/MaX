@@ -1,0 +1,8 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+plugins:
+  - electron-ui
+overrides:
+  - files: "en.ts"
+    rules:
+      electron-ui/context-comments:
+        - error

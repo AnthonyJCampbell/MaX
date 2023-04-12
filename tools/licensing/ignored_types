@@ -1,0 +1,16 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+# List of generally-approved licenses, which can be ignored in smoke CI tests.
+#
+# Do not update this list without explicit consultation of the third-party rep!
+#  - TODO Metacom link.
+0BSD
+Apache-2.0
+Artistic-2.0
+BSD-2-Clause
+BSD-3-Clause
+CC0-1.0
+ISC
+MIT
+Public Domain
+Unlicense
+WTFPL

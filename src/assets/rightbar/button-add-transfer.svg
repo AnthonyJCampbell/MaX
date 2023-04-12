@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>incall_btn_add_transfer</title>
+    <g id="incall_btn_add_transfer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FFFFFF" x="19" y="4" width="2" height="10" rx="1"></rect>
+        <rect id="Rectangle" fill="#FFFFFF" transform="translate(20.000000, 9.000000) rotate(90.000000) translate(-20.000000, -9.000000) " x="19" y="4" width="2" height="10" rx="1"></rect>
+        <path d="M23.4654658,17.6529246 C17.4793869,10.72021 5.45154464,10.72021 -0.534534245,17.6529246 L1.77637063,20.882623 L5.93878362,18.5856392 C6.85757712,18.1123213 6.85757712,16.2747343 6.85757712,16.2747343 C9.14063977,14.882623 13.7902917,14.882623 16.0872755,16.2608132 C16.0872755,16.2608132 16.0872755,18.1262424 16.9921479,18.5856392 L21.1545609,20.882623 L23.4654658,17.6529246 Z" id="PHONE" fill="#FFFFFF" transform="translate(11.465466, 16.668006) rotate(-135.000000) translate(-11.465466, -16.668006) "></path>
+    </g>
+</svg>

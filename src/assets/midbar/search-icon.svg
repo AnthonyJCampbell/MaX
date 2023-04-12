@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="22px" viewBox="0 0 21 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy-6" transform="translate(-140.000000, -90.000000)">
+            <g id="Group" transform="translate(141.000000, 91.000000)">
+                <circle id="Oval" stroke="#979797" stroke-width="2" opacity="0.600000024" cx="8" cy="8" r="8"></circle>
+                <line x1="15.25" y1="16.25" x2="17.75" y2="18.75" id="Line" stroke="#979797" stroke-width="2" opacity="0.600000024" stroke-linecap="square"></line>
+                <path d="M4.01678831,4.29435306 C3.71351546,8.43313543 7.56686457,12.2864845 11.7056469,11.9832117 L12,10.2081736 L9.93060881,9.61054766 C9.48461933,9.46783103 8.89591322,10.0565371 8.89591322,10.0565371 C7.71850099,9.77110387 6.22889613,8.28149901 5.93454307,7.10408678 C5.93454307,7.10408678 6.53216897,6.50646088 6.38945234,6.06939119 L5.79182644,4 L4.01678831,4.29435306 Z" id="PHONE" fill-opacity="0.538215691" fill="#000000"></path>
+            </g>
+        </g>
+    </g>
+</svg>

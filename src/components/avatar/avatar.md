@@ -1,0 +1,1 @@
+This component forms an avatar - the profile picture (if present) with the presence image (if the presence state is present) overlaid - for a given contact. This component is shared between the three panes of the main window.

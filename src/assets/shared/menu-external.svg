@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-external</title>
+    <g id="menu-external" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M0.5,3.33167477 L0.5,2.5 C0.5,1.94771525 0.94771525,1.5 1.5,1.5 L10.5,1.5 C11.0522847,1.5 11.5,1.94771525 11.5,2.5 L11.5,11.5 C11.5,12.0522847 11.0522847,12.5 10.5,12.5 L8.46164082,12.5 C8.16873273,12.5 7.89055117,12.37158 7.70055573,12.1486521" id="Rectangle" stroke="#2F78CA" transform="translate(6.000000, 7.000000) rotate(180.000000) translate(-6.000000, -7.000000) "></path>
+        <g id="Group" transform="translate(9.000000, 5.000000) rotate(-45.000000) translate(-9.000000, -5.000000) translate(4.500000, 2.000000)" stroke="#2F78CA" stroke-linecap="square">
+            <line x1="0.642857143" y1="3" x2="8.35714286" y2="3" id="Line-2"></line>
+            <line x1="5.5" y1="-2.84186735e-14" x2="8.32842712" y2="2.82842712" id="Line-2"></line>
+            <line x1="5.67157288" y1="3" x2="8.5" y2="5.82842712" id="Line-2" transform="translate(7.085786, 4.414214) scale(-1, 1) translate(-7.085786, -4.414214) "></line>
+        </g>
+    </g>
+</svg>

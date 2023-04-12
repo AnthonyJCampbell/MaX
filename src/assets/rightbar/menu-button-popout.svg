@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu_btn_popout</title>
+    <g id="menu_btn_popout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M1.5,8 L1.5,0.5 L12.5,0.5 L12.5,10.5 L6.5,10.5" id="Rectangle-Copy" stroke="#2F78CA" stroke-dasharray="2,1"></path>
+        <rect id="Rectangle" stroke="#2F78CA" x="0.5" y="7.5" width="6" height="5"></rect>
+        <rect id="Rectangle" fill="#2F78CA" x="10" y="3" width="1" height="3"></rect>
+        <rect id="Rectangle" fill="#2F78CA" x="7" y="2" width="4" height="1"></rect>
+        <line x1="10.5" y1="2.5" x2="6.5" y2="6.5" id="Line" stroke="#2F78CA" stroke-linecap="square"></line>
+    </g>
+</svg>

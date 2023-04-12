@@ -1,0 +1,9 @@
+// Copyright 2021 Metaswitch Networks - Highly Confidential Material
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "../build/",
+    "baseUrl": "."
+  }
+}

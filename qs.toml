@@ -1,0 +1,20 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+# QS project config file.
+
+[qs]
+version = "6.5.0"
+
+[project]
+name = "electron-ui"
+full_name = "MaX UC Desktop Electron UI"
+project_type = "bin"
+short_name = "ELECUI"
+language = "javascript"
+version = "4.2.1"
+
+[gitlab]
+namespace = "Accession Desktop"
+
+[copyright]
+exclude_files = ['.npmrc', '.prettierignore', '.eslintignore']
+exclude_directories = ['.npm']

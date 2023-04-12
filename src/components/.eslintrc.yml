@@ -1,0 +1,42 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+plugins:
+  - i18next
+ignorePatterns: ["*styles.js", "*styles.ts", "*styles.tsx", "*.stories.tsx"]
+rules:
+  i18next/no-literal-string:
+    - 2
+    - ignoreComponent: [Icon]
+      ignoreAttribute: [
+          "alt",
+          "aria-hidden",
+          "aria-label",
+          "aria-labelledby",
+          "aria-live",
+          "href",
+          "name",
+          "role",
+          "target",
+          "icon", # Icon name
+          "properties", # Linkify
+          "tagName", # Linkify
+          "placement", # Tippy
+          "parent", # Header panel
+          "panel", # Header panel
+          "idList", # Arrow key control
+        ]
+      ignoreCallee:
+        [
+          "i18n.*",
+          "log.*",
+          "formatDateTime",
+          "document.querySelector",
+          "path.join",
+          "setAttribute",
+          "window.open",
+          "getElementsByTagName",
+        ]
+      validateTemplate: true
+      # Rough checks for element IDs - usually they consist of some letters, followed by a dash, and
+      # more letters and dashes. There will be false positives and negatives for this exception, but
+      # not worth refining this further or enforcing a new style guide.
+      ignore: ["[^A-Za-z]*\\-[A-Za-z]*$"]

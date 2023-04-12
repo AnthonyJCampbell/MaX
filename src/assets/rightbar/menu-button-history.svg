@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-chat-history</title>
+    <g id="DUIR-276---Chat-history" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="DUIR-241---Menu" transform="translate(-696.000000, -269.000000)" fill="#2F78CA">
+            <g id="Group-2" transform="translate(684.000000, 170.000000)">
+                <g id="Group-6" transform="translate(12.000000, 99.000000)">
+                    <path d="M6.5,1 C9.53756612,1 12,3.46243388 12,6.5 C12,9.53756612 9.53756612,12 6.5,12 C5.03347034,12 3.70100028,11.4260226 2.71498109,10.490459 L3.48263094,9.83853311 C4.28081314,10.56038 5.33906719,11 6.5,11 C8.98528137,11 11,8.98528137 11,6.5 C11,4.01471863 8.98528137,2 6.5,2 C4.18362124,2 2.27601865,3.7501788 2.02743156,6.00029704 L3,6 L1.5,9 L0,6 L1.02238608,6.00039328 C1.27481555,3.19695546 3.63084455,1 6.5,1 Z M7,4 L7,7 L9,7 L9,8 L6,8 L6,4 L7,4 Z" id="Combined-Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+env:
+  jest/globals: true
+  node: true
+plugins:
+  - jest
+extends:
+  - plugin:jest/recommended
+  - plugin:jest/style
+rules:
+  # Disable this rule since it gives a false positive for `expect()` inside Jest's `each().it()`
+  # syntax (used for parametrizing tests)
+  jest/no-standalone-expect: off
+
+  # FV files export their tests to be run all together
+  jest/no-export: off
+
+  # Disable this rule since it gives a false positive for Enzyme's `exists()`  that is used for
+  # most of the React tests.
+  security/detect-non-literal-fs-filename: off
+
+  # There are vectors that are a risk for production code, but we do not require that level
+  # of sanitization in our test code.
+  security/detect-object-injection: off
+  security/detect-unsafe-regex: off
+globals:
+  # Indicate that window is in fact available in UTs.
+  window: readonly

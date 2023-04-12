@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>incall_btn_end</title>
+    <g id="incall_btn_end" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M4.04197077,5.73588264 C3.28378865,16.0828386 12.9171614,25.7162113 23.2641174,24.9580292 L24,20.5204339 L18.826522,19.0263691 C17.7115483,18.6695776 16.239783,20.1413428 16.239783,20.1413428 C13.2962525,19.4277597 9.57224032,15.7037475 8.83635768,12.760217 C8.83635768,12.760217 10.3304224,11.2661522 9.97363085,10.173478 L8.47956609,5 L4.04197077,5.73588264 Z" id="PHONE" fill="#D0021B" transform="translate(14.000000, 15.000000) rotate(135.000000) translate(-14.000000, -15.000000) "></path>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>button_answer</title>
+    <g id="button_answer" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="call_answer-copy" transform="translate(4.000000, 4.000000)" fill="#0E8A17">
+            <path d="M21.4285714,11.8447547 C15.1930726,4.623177 2.66407027,4.623177 -3.57142857,11.8447547 L-1.164236,15.2090239 L3.17161087,12.8163324 C4.12868744,12.323293 4.12868744,10.4091399 4.12868744,10.4091399 C6.50687769,8.95902386 11.3502652,8.95902386 13.7429566,10.3946387 C13.7429566,10.3946387 13.7429566,12.3377942 14.685532,12.8163324 L19.0213789,15.2090239 L21.4285714,11.8447547 Z" id="PHONE-Copy" transform="translate(8.928571, 10.818798) rotate(-130.000000) translate(-8.928571, -10.818798) "></path>
+        </g>
+    </g>
+</svg>

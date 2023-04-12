@@ -1,0 +1,447 @@
+###############################################################################
+# Name:      .gitlab-ci.yml
+#
+# Purpose:   Gitlab-GI configuration file for MaX UC UI builds.
+#
+# Copyright (C) Metaswitch Networks - Highly Confidential Material
+###############################################################################
+
+# We use the electron-builder recommended Docker image, which is documented
+# here:
+#   https://www.electron.build/multi-platform-build#provided-docker-images
+image: electronuserland/builder@sha256:$BUILD_CONTAINER_VERSION
+
+variables:
+  # This is the sha256 digest, to get a newer version see:
+  #   https://hub.docker.com/r/electronuserland/builder/tags
+  BUILD_CONTAINER_VERSION: b44981dcdc60192ba3f898042fc2a21f2bd7bb626dc66382e7dcdb2e3add38af
+  TAG: $CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA
+  ARTIFACTORY_URL: "https://artifactory.metaswitch.com"
+  ARTIFACTORY_LOC: "accession-clients/Desktop/refresh-client"
+  # qs-manifest is pinned to <0.30 as "qs-manifest build external" from that release no
+  # longer works with NPM-based manifests.
+  QS_MANIFEST_IMAGE: $DOCKER_RELEASE_REGISTRY/tools.core/qs-manifest:0.29.5
+  DITA_IMAGE: $DOCKER_RELEASE_REGISTRY/images.core/msw-dita:1.1.0
+  QS_IMAGE: $DOCKER_RELEASE_REGISTRY/images.core/base-dev/centos7:4.1.0
+  # Manually add non-npm dependencies to the manifest
+  MANIFEST_BUILD_OPTIONS: >
+    --build-dep electronuserland%2Fbuilder~container~vwine-sha256-$BUILD_CONTAINER_VERSION
+    --static-dep fonts.google.com_specimen_Lato~font~v
+  # TODO BRANDING: This was added to facilitate upgrade testing
+  # and may need to be modified when the branding layer is implemented.
+  # Please also update the documentation: https://metacom2.metaswitch.com/confluence/x/qE4dC
+  JAVA_BRAND: accession-dev
+
+include:
+  - project: "tools.core/qs-ci"
+    ref: "2.0.0"
+    file: "npm-manifest.yml"
+  - project: "tools.core/qs-ci"
+    ref: "2.0.0"
+    file: "all-manifests.yml"
+
+cache:
+  key: $CI_PIPELINE_IID
+  paths:
+    # We want to cache npm installs, to avoid lots of re-downloading of dependencies
+    # either per-pipine or per-job. We use the recommended procedure from Gitlab for
+    # Node, listed here:
+    #   https://docs.gitlab.com/ee/ci/caching/#caching-nodejs-dependencies
+    - .npm/
+
+    # Manifest output directory, used by several jobs
+    - target/
+
+stages:
+  - install
+  - verify
+  - test
+  - build
+  - dependency_check
+  - open_source_acks
+  - publish
+  - trigger
+
+# Setup for jobs that upload artifacts.
+.upload_artifacts: &upload_artifacts
+  artifacts:
+    name: "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG.$CI_PIPELINE_IID"
+    paths:
+      # Upload installers and the win-unpacked directory.
+      - ./dist/
+    expire_in: 1 week
+
+# Setup for jobs that push down into the downstream Java pipeline.
+.bundled_installer_pipeline: &bundled_installer_pipeline
+  only:
+    variables:
+      # Downstreams builds are triggered if and only if there is a specific
+      # branch in the downstream to build from.
+      #  - refresh-master is used automatically for some protected branches, see
+      #      https://git.datcon.co.uk/accession/Desktop/electron-ui/-/settings/ci_cd
+      #  - TRIGGER_JAVA_BRANCH can be manually set for a specific pipeline
+      - $TRIGGER_JAVA_BRANCH
+
+.install_npm_cache: &install_npm_cache
+  before_script:
+    - npm ci --cache .npm --prefer-offline
+
+# Perform an initial install of node modules, which is cached for later jobs.
+# This checks that we can install all our npm dependencies.
+install:
+  stage: install
+  script:
+    - npm ci
+
+format:
+  stage: verify
+  needs:
+    - install
+  script:
+    - npm install prettier --cache .npm --prefer-offline
+    - npx prettier "./{src,public,node-server,test}/**/*.{js,jsx,ts,tsx}" --check
+
+package_lock_linter:
+  stage: verify
+  needs:
+    - install
+  <<: *install_npm_cache
+  script:
+    - npx ts-node --project tsconfig.base.json tools/linting/lint-package-lock.ts
+
+general_linter:
+  stage: verify
+  needs:
+    - install
+  script:
+    - npm install eslint --cache .npm --prefer-offline
+    - npm run lint
+
+# Compiles typescript, to ensure all ts files are compilable
+typescript_linter:
+  stage: verify
+  needs:
+    - install
+  script:
+    - npx tsc
+
+# Perform an Electron-specific security scan
+security_linter:
+  stage: verify
+  needs:
+    - install
+  script:
+    - npm install @doyensec/electronegativity --cache .npm --prefer-offline
+
+    # Electronegativity doesn't understand all ES6 syntax, so run it over the transpiled ES5 code
+    - npx link-module-alias
+    - npm run bundle-node-server
+
+    # We need to get the actual electron version here as electronegativity doesn't get it
+    - electron_version=`npm list electron | grep -oP " electron@\K[0-9.]+"`
+
+    # Sadly, electronegativity doesn't use a denylist to remove the checks you don't want,
+    # instead it uses an allowlist, which means that we need to pass the complete list.
+    # Even more sadly, the docs don't include the complete list without mistakes, so this
+    # is as good as we have.  Also sadly, there is no mechanism to ignore individual instances
+    # of a check, you can only disable the whole thing.
+    # Checks that are not being run:
+    # * HTTPResourcesJSCheck - cannot find correct spelling!
+    # * AuxClickJSCheck - Prevent false +ve: fixed according to suggestion
+    # * ContextIsolationJSCheck - Suggested fix breaks the client, TODO: so raised as duir-1569
+    # * CSPGlobalCheck - Prevent false +ve: index.html contains the CSP header
+    # * LimitNavigationJSCheck - Prevent false +ves: (Note, all 3 are tentative)
+    # * OpenExternalJSCheck - Disabled to allow users to open links in chat messages.
+    # * PermissionRequestHandlerGlobalCheck - Needs fixing, TODO: so raised as duir-1569
+    # * RemoteModuleJSCheck - Suggested fix breaks the client, TODO: so raised as duir-1569
+    # * SandboxJSCheck - Suggested fix breaks the client, TODO: so raised as duir-1569
+    - npx electronegativity -i build/node-server/ public/ src/ -e $electron_version -v -r -s LOW -c FIRM -o output.csv -l AffinityGlobalCheck,AllowPopupsHTMLCheck,AvailableSecurityFixesGlobalCheck,BlinkFeaturesJSCheck,BlinkFeaturesHTMLCheck,CertificateErrorEventJSCheck,CertificateVerifyProcJSCheck,CustomArgumentsJSCheck,CustomArgumentsJSONCheck,DangerousFunctionsJSCheck,ElectronVersionJSONCheck,ExperimentalFeaturesHTMLCheck,ExperimentalFeaturesJSCheck,HTTPResourcesHTMLCheck,HTTPResourcesAndNodeIntegrationGlobalCheck,InsecureContentHTMLCheck,InsecureContentJSCheck,LimitNavigationGlobalCheck,NodeIntegrationHTMLCheck,NodeIntegrationAttachEventJSCheck,NodeIntegrationJSCheck,PermissionRequestHandlerJSCheck,PreloadJSCheck,ProtocolHandlerJSCheck,SecurityWarningsDisabledJSCheck,SecurityWarningsDisabledJSONCheck,WebSecurityHTMLCheck,WebSecurityJSCheck
+
+security:
+  stage: verify
+  needs:
+    - install
+  # TODO: Fix security vulnerabilities and remove this line
+  allow_failure: true
+  image: python:3
+  script:
+    - pip install nodejsscan
+    - python ./tools/security/nodejsscan.py
+
+# Run qs check for copyright and confidentiality statements
+qs-checks:
+  stage: verify
+  needs:
+    - install
+  image: $QS_IMAGE
+  script:
+    - qs check-copyright
+
+# Run automated regression tests
+react_uts:
+  stage: test
+  needs:
+    - general_linter
+  <<: *install_npm_cache
+  script:
+    - npm run-script test-react-ut
+
+node_uts:
+  stage: test
+  needs:
+    - general_linter
+  <<: *install_npm_cache
+  script:
+    - npm run-script test-node-ut
+
+visual_regression_tests:
+  stage: test
+  needs:
+    - typescript_linter
+  tags:
+    - refresh
+    - windows
+  script:
+    # TODO - There's an unknown issue with cache corruption that we sometimes run into on the FV
+    # runner, so for now we install without cache instead.
+    # The error looks something like https://github.com/npm/npm/issues/19228.
+    - npm ci
+    - npm run-script backstop:test
+  after_script:
+    # Automatic artifact upload is broken in the windows runner, so use this work-around.
+    - /cygdrive/c/GitLab-Runner/gitlab-runner.exe artifacts-uploader --verbose --id "${CI_JOB_ID}"
+      --token "${CI_JOB_TOKEN}" --url "${CI_SERVER_URL}" --retry "10" --retry-time "10s" --artifact-format zip
+      --artifact-type archive --expire-in 604800 --path "./backstop"
+      --name "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG-VRT.$CI_PIPELINE_IID"
+
+electron_fvs:
+  stage: test
+  needs:
+    - general_linter
+  tags:
+    - refresh
+    - windows
+  # It's quite easy to write flakey FVs, so allow one retry to decrease the false negative rate.
+  # See test/electron-fv/electron-fv-readme.md for more info
+  retry: 1
+  before_script:
+    - Taskkill /IM node.exe /IM electron.exe /IM "MaX UC Refresh.exe" /IM electron-ui.exe /IM MaXUC.exe /F  & set errorlevel=0 # 💣 🙈
+    - sleep 10; # So Taskkill doesn't kill `npm ci`
+  script:
+    # TODO - There's an unknown issue with cache corruption that we sometimes run into on the FV
+    # runner, so for now we install without cache instead.
+    # The error looks something like https://github.com/npm/npm/issues/19228.
+    - npm ci
+    # Logs must be written to APPDATA, otherwise virus protection kills perf and
+    # the tests fail.  That means that the logs are outside the repo and so we
+    # must handle clean-up of old ones ourselves.
+    # If the FV tests appear to pass, we search for part of the jest 'tests complete'
+    # output to check that they actually ran.
+    - npm run-script test-electron-fv 2>&1 | tee jest.out && grep "Ran all test suites" jest.out
+  after_script:
+    # Gitlab CI artifact upload must be from inside the repo, so we need to copy the logs across first.
+    # They will be cleaned-up when the repo is refreshed on the next build.
+    - mkdir ./fvlogs
+    - cp -r $APPDATA/max_uc_react/fv/job$CI_JOB_ID/log/ ./fvlogs/
+    - rm -rf $APPDATA/max_uc_react/fv/job$CI_JOB_ID
+    # Automatic artifact upload is broken in the windows runner, so use this work-around.
+    - /cygdrive/c/GitLab-Runner/gitlab-runner.exe artifacts-uploader --verbose --id "${CI_JOB_ID}"
+      --token "${CI_JOB_TOKEN}" --url "${CI_SERVER_URL}" --retry "10" --retry-time "10s" --artifact-format zip
+      --artifact-type archive --expire-in 604800 --path "./fvlogs"
+      --name "${CI_JOB_NAME}-${CI_COMMIT_REF_SLUG}_${VERSION_STRING}.${CI_PIPELINE_IID}"
+    - Taskkill /IM node.exe /IM electron.exe /IM "MaX UC Refresh.exe" /IM electron-ui.exe /IM MaXUC.exe /F  & set errorlevel=0
+build_ui_win:
+  <<: *upload_artifacts
+  stage: build
+  needs:
+    - general_linter
+  <<: *install_npm_cache
+  variables:
+    CSC_LINK: $SIGN_CERT_FILE
+    CSC_KEY_PASSWORD: $WIN_SIGN_CERT_PASSWORD
+  script:
+    - npm run-script build-win
+
+build_ui_mac:
+  <<: *upload_artifacts
+  stage: build
+  needs:
+    - general_linter
+  <<: *install_npm_cache
+  variables:
+    CSC_KEYCHAIN: $MAC_KEYCHAIN
+    CSC_KEY_PASSWORD: $MAC_SIGN_CERT_PASSWORD
+  script:
+    - security unlock-keychain -p $BUILD_PASSWORD
+    - npm run-script build-mac
+    - security lock-keychain
+  # This job needs to be run on mac build machines with npm installed
+  tags:
+    - macosx
+    - accession_desktop_dev
+    - npm_installed
+
+build-npm-manifest:
+  # Our `package-lock.json` references our custom ESLint plugin. We don't want this to appear, so
+  # remove it with `sed`. This is because we don't want it as a dependency of `electron-ui` for a
+  # few reasons:
+  # 1. It's not a dependency, it's an integral part of the codebase
+  # 2. Splitting it out as a dependency has a lot of overhead. It would need bundling into its own
+  #    package and uploading to artifactory, then pulled down by electron-ui, i.e. what
+  #    protobuf-wispa does.
+  #
+  # In future we should do one of the following:
+  # 1. Update the qs-manifest manifest builder to ignore `file://` dependencies
+  # 2. Split it out as its own package
+  #
+  # This problem may also go away when we move to Microsoft OneBranch
+  before_script:
+    - sed '/eslint-plugin-electron-ui/,+3d' package-lock.json -i
+  needs:
+    - install
+
+deep-validate-manifest:
+  needs:
+    - build-npm-manifest
+  when: always
+  allow_failure: false
+
+generate_external_manifests:
+  image: $QS_MANIFEST_IMAGE
+  stage: dependency_check
+  needs:
+    - build-npm-manifest
+  when: manual
+  before_script:
+    # The QS manifest container has a different version of NPM. We need a version that is
+    # at least compatible with our lockfile, so install the current LTS version of NPM.
+    #
+    # This also bypasses cached NPM packages from the normal container - that's OK because
+    # it's a small improvement and unclear if the cache is cross-version compatible!
+    - npm install -g npm@6
+  script:
+    - mkdir -p target/manifests/external
+    - qs-generate-external-manifests target/manifests/electron-ui~javascript-app~*.yaml || true
+    - mv *.yaml target/manifests/external
+  artifacts:
+    paths:
+      - target/manifests
+    expire_in: 1 week
+    when: always
+
+form_open_source_acks:
+  image: $QS_MANIFEST_IMAGE
+  stage: dependency_check
+  needs:
+    - build-npm-manifest
+  when: manual
+  script:
+    - cp target/manifests/*.yaml .
+    - qs-open-source-acks electron-ui~javascript-app~*.yaml
+  artifacts:
+    paths:
+      - "*.dita"
+    expire_in: 1 week
+    when: always
+
+os_acks_html:
+  image: $DITA_IMAGE
+  stage: open_source_acks
+  # We cannot specify "needs" here, which allows out of order running, because
+  # a "needs" on a manual job is not correctly treated as optional.
+  # The similar "dependencies" does not provide out of order running, but is correct
+  # in its handling of optional jobs.
+  dependencies:
+    - form_open_source_acks
+  when: manual
+  script:
+    # There are some placeholders in the xml which need replacing with actual values.
+    # We don't include the version number, so get rid of the hardcoded V that is meant to preceed it as well
+    - sed -i 's#<ph keyref="product"/>#MaX UC#' *.dita
+    - sed -i 's# V<ph keyref="version"/>##' *.dita
+    - sed -i 's#<ph keyref="address"/>#Metaswitch#' *.dita
+    - dita -i *.dita -f html5
+  artifacts:
+    paths:
+      - out/
+    expire_in: 1 week
+    when: always
+
+dependency_check:
+  stage: dependency_check
+  needs:
+    - install
+  script:
+    # Check for dependencies with NPM-declared issues (ignoring low, as they occur
+    # regularly).
+    #
+    # TODO DUIR-1719: Disabled until react-scripts has a version of object-path
+    # that is at least version 0.11.5.
+    #- npm audit --audit-level=moderate
+    - npm audit --audit-level=critical
+
+    # The --ignore flag can be used to ignore specific modules with tracked issues.
+    # We could add dependencies to `.retireignore.json` as well, and provide a
+    # reason for ignoring the specified dependency vulnerability
+    #  - (There are currently no issues)
+    - npm install retire --cache .npm --prefer-offline
+    - npx retire
+
+    # Run a basic license smoke-check.
+    - python3 tools/licensing/smoke.py
+
+deploy:
+  <<: *bundled_installer_pipeline
+  stage: publish
+  needs:
+    - build_ui_mac
+    - build_ui_win
+  # Use our standard artifactory_cli image to upload. Details here:
+  #   https://git.datcon.co.uk/images.core/artifactory_cli
+  image: art-docker.metaswitch.com/images.core/artifactory_cli
+  script:
+    - ./tools/upload_build_files_artifactory.sh
+
+# Basic trigger job for trialling Electron changes against a Java branch.
+trigger:
+  <<: *bundled_installer_pipeline
+  variables:
+    ELECTRON_COMMIT: $CI_COMMIT_SHORT_SHA
+    BUILD_BRAND: $JAVA_BRAND
+  stage: trigger
+  except:
+    refs:
+      - master
+  needs:
+    - deploy
+  trigger:
+    project: accession/Desktop/AccessionDesktop
+    branch: $TRIGGER_JAVA_BRANCH
+
+# Merge trigger job for merging master Electron changes into the downstream Java repo.
+#
+# As this will automatically merge to downstream master, run only if this repo
+# is in a good state, with all jobs passing.
+trigger_merge:
+  <<: *bundled_installer_pipeline
+  variables:
+    ELECTRON_COMMIT: $CI_COMMIT_SHORT_SHA
+    ELECTRON_MERGER: $GITLAB_USER_LOGIN
+  stage: trigger
+  only:
+    refs:
+      - master
+  needs:
+    - format
+    - security
+    - security_linter
+    - node_uts
+    - react_uts
+    - visual_regression_tests
+    - electron_fvs
+    - deploy
+    - deep-validate-manifest
+    - dependency_check
+  trigger:
+    project: accession/Desktop/AccessionDesktop
+    branch: $TRIGGER_JAVA_BRANCH

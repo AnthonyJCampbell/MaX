@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-logout</title>
+    <g id="DUIR-1669---SETTINGS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu-logout" stroke="#C12C35">
+            <path d="M0.5,2.925 L0.5,1.54166667 C0.5,0.989381917 0.94771525,0.541666667 1.5,0.541666667 L5.5,0.541666667 C6.05228475,0.541666667 6.5,0.989381917 6.5,1.54166667 L6.5,11.4583333 C6.5,12.0106181 6.05228475,12.4583333 5.5,12.4583333 L1.5,12.4583333 C0.94771525,12.4583333 0.5,12.0106181 0.5,11.4583333 L0.5,10.075" id="Rectangle" transform="translate(3.500000, 6.500000) rotate(180.000000) translate(-3.500000, -6.500000) "></path>
+            <line x1="4.14285714" y1="6.5" x2="11.8571429" y2="6.5" id="Line-2" stroke-linecap="square"></line>
+            <line x1="9" y1="3.25" x2="11.8284271" y2="6.31412939" id="Line-2" stroke-linecap="square"></line>
+            <line x1="9.17157288" y1="6.5" x2="12" y2="9.56412939" id="Line-2" stroke-linecap="square" transform="translate(10.585786, 8.032065) scale(-1, 1) translate(-10.585786, -8.032065) "></line>
+        </g>
+    </g>
+</svg>

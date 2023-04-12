@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>presence-away</title>
+    <g id="presence-away" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="50" cy="50" r="50"></circle>
+        <circle id="Oval" fill="#FCB90F" cx="50" cy="50" r="40"></circle>
+        <g transform="translate(48.000000, 20.000000)" stroke="#FFFFFF" stroke-linecap="square" stroke-width="10.5">
+            <line x1="3.5" y1="35" x2="20.5" y2="51.5" id="Line"></line>
+            <line x1="1.5" y1="0.5" x2="1" y2="30" id="Line-5"></line>
+        </g>
+    </g>
+</svg>

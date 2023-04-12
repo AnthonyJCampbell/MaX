@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <g id="Buttons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sidebar---Header" transform="translate(-18.000000, -73.000000)">
+            <g id="Group-3" transform="translate(18.000000, 73.000000)">
+                <circle id="Oval" fill="#6CD400" cx="15" cy="15" r="15"></circle>
+                <path d="M15.055,9 C15.5769091,9 16,9.42309091 16,9.945 L16,14 L20.055,14 C20.5769091,14 21,14.4230909 21,14.945 L21,15.055 C21,15.5769091 20.5769091,16 20.055,16 L16,16 L16,20.055 C16,20.5769091 15.5769091,21 15.055,21 L14.945,21 C14.4230909,21 14,20.5769091 14,20.055 L14,16 L9.945,16 C9.42309091,16 9,15.5769091 9,15.055 L9,14.945 C9,14.4230909 9.42309091,14 9.945,14 L14,14 L14,9.945 C14,9.42309091 14.4230909,9 14.945,9 L15.055,9 Z" id="Combined-Shape-Copy-7" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

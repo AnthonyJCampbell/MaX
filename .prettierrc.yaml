@@ -1,0 +1,4 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+# Configuration file for the Prettier autoformatter
+printWidth: 100
+endOfLine: auto

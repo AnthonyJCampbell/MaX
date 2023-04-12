@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>incall_btn_audio</title>
+    <g id="incall_btn_audio" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M21.3970123,21 C20.2302548,18.0262978 17.3344938,15.9208247 13.9469732,15.9208247 C10.6096719,15.9208247 7.74965781,17.964334 6.54996085,20.8683228" id="Oval" stroke="#FFFFFF" stroke-width="2" transform="translate(13.973487, 18.460412) rotate(180.000000) translate(-13.973487, -18.460412) "></path>
+        <rect id="Rectangle" fill="#FFFFFF" x="10" y="3" width="8" height="15" rx="4"></rect>
+        <rect id="Rectangle" fill="#FFFFFF" x="13" y="20" width="2" height="4"></rect>
+    </g>
+</svg>

@@ -1,0 +1,7 @@
+{
+  // This config file is purely to allow ESLint to run its "no-floating-promises" rule on test files.
+  // That requires a tsconfig file that includes the linted files, which our "production" tsconfig
+  // files do not
+  "extends": "./tsconfig.base.json",
+  "include": ["test", "src", "node-server", "tools"]
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>button-onhold</title>
+    <g id="DUIR-1670---Mute" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1670---Hold-button" transform="translate(-784.000000, -139.000000)">
+            <g id="CALL-HEADER-Copy" transform="translate(420.000000, 116.000000)">
+                <g id="Group" transform="translate(364.000000, 23.000000)">
+                    <path d="M14,0 C21.7319865,0 28,6.2680135 28,14 C28,21.7319865 21.7319865,28 14,28 C6.2680135,28 0,21.7319865 0,14 C0,6.2680135 6.2680135,0 14,0 Z M12,20.526 L8.8741571,23.6532553 C9.1948477,23.8720638 9.5824833,24 10,24 C11.1045695,24 12,23.1045695 12,22 L12,22 L12,20.526 Z M20,12.526 L16,16.526 L16,22 C16,23.0543618 16.8158778,23.9181651 17.8507377,23.9945143 L18,24 C19.1045695,24 20,23.1045695 20,22 L20,22 L20,12.526 Z M10,5 C8.8954305,5 8,5.8954305 8,7 L8,7 L8,16.041 L12,12.041 L12,7 C12,5.9456382 11.1841222,5.08183488 10.1492623,5.00548574 Z M18,5 C16.8954305,5 16,5.8954305 16,7 L16,7 L16,8.041 L18.8523604,5.19020195 C18.6363749,5.08830116 18.3992056,5.02392587 18.1492623,5.00548574 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                    <rect id="Rectangle" fill="#AD1A1A" transform="translate(14.000000, 14.000000) rotate(45.000000) translate(-14.000000, -14.000000) " x="13" y="3" width="2" height="22" rx="1"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

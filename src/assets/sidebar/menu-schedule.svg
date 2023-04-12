@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-schedule</title>
+    <g id="menu-schedule" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="tab-meeting" transform="translate(0.000000, 1.000000)">
+            <path d="M11.5555556,1.5 C11.81294,1.5 12.0443108,1.61379783 12.2124161,1.79284487 C12.3915749,1.98366482 12.5,2.24792119 12.5,2.53846154 L12.5,2.53846154 L12.5,9.46153846 C12.5,9.75207881 12.3915749,10.0163352 12.2124161,10.2071551 C12.0443108,10.3862022 11.81294,10.5 11.5555556,10.5 L11.5555556,10.5 L1.44444444,10.5 C1.18705996,10.5 0.955689155,10.3862022 0.787583875,10.2071551 C0.608425149,10.0163352 0.5,9.75207881 0.5,9.46153846 L0.5,9.46153846 L0.5,2.53846154 C0.5,2.24792119 0.608425149,1.98366482 0.787583875,1.79284487 C0.955689155,1.61379783 1.18705996,1.5 1.44444444,1.5 L1.44444444,1.5 Z" id="Rectangle-Copy-15" stroke="#2F78CA"></path>
+            <rect id="Rectangle" fill="#2F78CA" x="2" y="4" width="2" height="2"></rect>
+            <rect id="Rectangle-Copy-2" fill="#2F78CA" x="2" y="7" width="2" height="2"></rect>
+            <rect id="Rectangle" fill="#2F78CA" x="5" y="4" width="2" height="2"></rect>
+            <rect id="Rectangle-Copy-3" fill="#2F78CA" x="5" y="7" width="2" height="2"></rect>
+            <rect id="Rectangle" fill="#2F78CA" x="8" y="4" width="3" height="5"></rect>
+            <rect id="Rectangle" fill="#2F78CA" x="2" y="0" width="1" height="3"></rect>
+            <rect id="Rectangle" fill="#2F78CA" x="10" y="0" width="1" height="3"></rect>
+        </g>
+    </g>
+</svg>

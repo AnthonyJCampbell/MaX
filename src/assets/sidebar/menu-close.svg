@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-close</title>
+    <g id="DUIR-1669---SETTINGS" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group">
+            <rect id="Rectangle" stroke="#C63D45" x="0.5" y="0.5" width="12" height="12" rx="0.5"></rect>
+            <line x1="3" y1="10" x2="10" y2="3" id="Line-3" stroke="#C12C35" stroke-linecap="square"></line>
+            <line x1="3" y1="10" x2="10" y2="3" id="Line-3" stroke="#C12C35" stroke-linecap="square" transform="translate(6.500000, 6.500000) scale(1, -1) translate(-6.500000, -6.500000) "></line>
+        </g>
+    </g>
+</svg>

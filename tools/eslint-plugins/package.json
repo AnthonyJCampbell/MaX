@@ -1,0 +1,5 @@
+{
+  "name": "eslint-plugin-electron-ui",
+  "description": "ESLint plugin for use with electron-ui",
+  "main": "index.js"
+}

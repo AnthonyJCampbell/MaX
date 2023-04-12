@@ -1,0 +1,74 @@
+# For details on how this file works, see https://docs.gitlab.com/ee/user/project/code_owners.html
+#
+# For more information on component owners in general, see docs/component_ownership.md
+#
+# We typically write as `primary backup`, which is useful for readers here, but has no impact on Gitlab.
+#
+# The NPM Steward tool used to auto-update this repo is based on Github syntax, not Gitlab and so doesn't support inline comments or groups.
+
+## Product Components
+#[React]
+/src/components/          @bb3 @ac12
+
+#[Redux]
+# Some directories covered by Controller below.
+/src/store                @ac12 @hmw
+/src/store/action-creators/ipc-incoming/
+/src/store/action-creators/ipc-outgoing/
+
+#[Controller]
+# Some directories covered by Redux above.
+/src                      @nds hmw
+/src/store/
+/src/store/action-creators/ipc-incoming/ @nds @hmw
+/src/store/action-creators/ipc-outgoing/ @nds @hmw
+
+#[Electron]
+/node-server/             @hmw @bb3
+
+## Support Components
+#[Docs]
+/docs/                    @hmw @aeit
+*.md                      @hmw @aeit
+
+#[Builds]
+/docs/builds.md           @nds @hmw
+/docs/bundled_installer.md      @nds @hmw
+/docs/continuous_integration.md @nds @hmw
+/tsconfig.json            @nds @hmw
+/babel.config.js          @nds @hmw
+/package.json             @nds @hmw
+/public/                  @nds @hmw
+/react-app-env.d.ts       @nds @hmw
+/.gitlab-ci.yml           @nds @hmw
+
+#[Unit Tests]
+/node-server/__mocks__/   @nds @bb3
+/src/__mocks__/           @nds @bb3
+/test/react-ut/           @nds @bb3
+/test/node-ut/            @nds @bb3
+/test/__mocks__/          @nds @bb3
+/test/utils/              @nds @bb3
+
+#[FVs]
+/test/electron-fv/        @hmw @ag9
+
+#[Developer Experience]
+/docs/tooling.md          @nds @hmw
+/tools/cli/               @nds @hmw
+/package.json             @nds @hmw
+.eslint*                  @nds @hmw
+.prettier*                @nds @hmw
+
+## Quality Components
+#[Accessibility]
+/docs/accessibility.md    @aeit @bb3
+
+#[Security]
+/tools/security/          @tal @nds
+/docs/security.md         @tal @nds
+
+#[Third Party Code]
+/tools/licensing/         @hmw @tal
+/docs/third_party_code.md @hmw @tal
+/package.json             @hmw @tal

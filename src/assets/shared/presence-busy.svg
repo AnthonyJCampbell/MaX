@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>presence-busy</title>
+    <g id="presence-busy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="50" cy="50" r="50"></circle>
+        <circle id="Oval" fill="#EA590C" cx="50" cy="50" r="40"></circle>
+        <line x1="14.25" y1="50.25" x2="83.75" y2="50.25" id="Line-6" stroke="#FFFFFF" stroke-width="12.5" stroke-linecap="square" transform="translate(49.000000, 50.250000) rotate(45.000000) translate(-49.000000, -50.250000) "></line>
+    </g>
+</svg>

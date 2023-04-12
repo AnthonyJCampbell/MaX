@@ -1,0 +1,689 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CustomStatus /> Renders in initial state with a custom status already set 1`] = `
+.c0 {
+  background-color: #f7f7f7;
+  margin-left: 6px;
+  margin-top: 4px;
+  position: relative;
+  max-width: 178px;
+}
+
+.c1 {
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
+
+.c2 {
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+  display: block;
+  font-size: 12px;
+  height: auto;
+  line-height: 1.2;
+  max-height: 64px;
+  margin-bottom: 7px;
+  padding-left: 28px;
+  padding-top: 8px;
+  overflow-y: auto;
+  word-break: break-word;
+  width: 99%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 1px 0 1px;
+  background: #ffffff;
+}
+
+.c4 {
+  border: 2px solid transparent;
+  color: #2F78CA;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c4:first-child {
+  margin-right: 2px;
+}
+
+.c4:focus {
+  border: 2px solid #2F78CA;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.c4:hover {
+  cursor: pointer;
+  border: 2px solid #2F78CA;
+}
+
+.c4:active {
+  cursor: pointer;
+}
+
+.c4:disabled {
+  cursor: default;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+<div
+  className="c0"
+  id="anId"
+  onKeyDown={[Function]}
+>
+  <img
+    alt=""
+    className="c1"
+    src="menu-status"
+  />
+  <p
+    className="c2"
+    tabIndex={0}
+  >
+    An custom status
+  </p>
+  <div
+    className="c3"
+  >
+    <button
+      className="c4"
+      id="customStatusButtonEdit"
+      onClick={[MockFunction]}
+    >
+      edit
+    </button>
+    <button
+      className="c4"
+      id="customStatusButtonClear"
+      onClick={[Function]}
+    >
+      clear
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<CustomStatus /> Renders in the close state 1`] = `
+.c0 {
+  padding: 4px 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 190px;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  border: none;
+  width: 100%;
+  font-size: 12px;
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c0:focus {
+  background-color: #2F78CA4d;
+}
+
+.c0:hover {
+  cursor: pointer;
+  background-color: #2F78CA1a;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.c0:active {
+  cursor: pointer;
+  background-color: #2F78CA80;
+}
+
+.c0 p {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 img {
+  margin-right: 8px;
+  padding-top: 1px;
+  max-width: 14px;
+  max-height: 14px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #000000de;
+}
+
+.c2 {
+  color: #000000;
+}
+
+.c3 {
+  color: #000000a6;
+  margin-left: 3px;
+  display: inline-block;
+}
+
+<button
+  className="c0"
+  disabled={false}
+  id="anId"
+  onClick={[Function]}
+>
+  <img
+    alt=""
+    src="menu-status"
+  />
+  <div
+    className="c1"
+  >
+    <p
+      className="c2"
+    >
+      setCustomStatus
+    </p>
+    <p
+      className="c3"
+    />
+  </div>
+</button>
+`;
+
+exports[`<CustomStatus /> Renders in the close state with a custom status already set 1`] = `
+.c0 {
+  background-color: #f7f7f7;
+  margin-left: 6px;
+  margin-top: 4px;
+  position: relative;
+  max-width: 178px;
+}
+
+.c1 {
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
+
+.c2 {
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+  display: block;
+  font-size: 12px;
+  height: auto;
+  line-height: 1.2;
+  max-height: 64px;
+  margin-bottom: 7px;
+  padding-left: 28px;
+  padding-top: 8px;
+  overflow-y: auto;
+  word-break: break-word;
+  width: 99%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 1px 0 1px;
+  background: #ffffff;
+}
+
+.c4 {
+  border: 2px solid transparent;
+  color: #2F78CA;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c4:first-child {
+  margin-right: 2px;
+}
+
+.c4:focus {
+  border: 2px solid #2F78CA;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.c4:hover {
+  cursor: pointer;
+  border: 2px solid #2F78CA;
+}
+
+.c4:active {
+  cursor: pointer;
+}
+
+.c4:disabled {
+  cursor: default;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+<div
+  className="c0"
+  id="anId"
+  onKeyDown={[Function]}
+>
+  <img
+    alt=""
+    className="c1"
+    src="menu-status"
+  />
+  <p
+    className="c2"
+    tabIndex={0}
+  >
+    An custom status
+  </p>
+  <div
+    className="c3"
+  >
+    <button
+      className="c4"
+      id="customStatusButtonEdit"
+      onClick={[MockFunction]}
+    >
+      edit
+    </button>
+    <button
+      className="c4"
+      id="customStatusButtonClear"
+      onClick={[Function]}
+    >
+      clear
+    </button>
+  </div>
+</div>
+`;
+
+exports[`<CustomStatus /> Renders in the editing state 1`] = `
+.c0 {
+  background-color: #f7f7f7;
+  margin-left: 6px;
+  margin-top: 4px;
+  position: relative;
+  max-width: 178px;
+}
+
+.c1 {
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
+
+.c2 {
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+  border: none;
+  font-size: 12px;
+  height: 45px;
+  line-height: 1.2;
+  margin-top: 4px;
+  padding-left: 28px;
+  resize: none;
+  width: 99%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 1px 0 1px;
+  background: #ffffff;
+}
+
+.c4 {
+  border: 2px solid transparent;
+  color: #2F78CA;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c4:first-child {
+  margin-right: 2px;
+}
+
+.c4:focus {
+  border: 2px solid #2F78CA;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.c4:hover {
+  cursor: pointer;
+  border: 2px solid #2F78CA;
+}
+
+.c4:active {
+  cursor: pointer;
+}
+
+.c4:disabled {
+  cursor: default;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.c5 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: 8px;
+  text-align: right;
+  width: 24px;
+  color: #636363;
+}
+
+<div
+  className="c0"
+  id="anId"
+  onKeyDown={[Function]}
+>
+  <img
+    alt=""
+    className="c1"
+    src="menu-status"
+  />
+  <textarea
+    aria-label="customStatusTextDefault"
+    aria-live="polite"
+    className="c2"
+    id="customStatus"
+    name="customStatus"
+    onChange={[Function]}
+    value=""
+  />
+  <div
+    className="c3"
+  >
+    <button
+      className="c4"
+      disabled={false}
+      id="customStatusButtonSave"
+      onClick={[Function]}
+    >
+      save
+    </button>
+    <button
+      className="c4"
+      id="customStatusButtonCancel"
+      onClick={[Function]}
+    >
+      cancel
+    </button>
+    <span
+      className="c5"
+    >
+      100
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<CustomStatus /> Renders in the editing state with a custom status already set 1`] = `
+.c0 {
+  background-color: #f7f7f7;
+  margin-left: 6px;
+  margin-top: 4px;
+  position: relative;
+  max-width: 178px;
+}
+
+.c1 {
+  position: absolute;
+  top: 8px;
+  left: 7px;
+}
+
+.c2 {
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+  border: none;
+  font-size: 12px;
+  height: 45px;
+  line-height: 1.2;
+  margin-top: 4px;
+  padding-left: 28px;
+  resize: none;
+  width: 99%;
+}
+
+.c3 {
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px 1px 0 1px;
+  background: #ffffff;
+}
+
+.c4 {
+  border: 2px solid transparent;
+  color: #2F78CA;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 2px 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c4:first-child {
+  margin-right: 2px;
+}
+
+.c4:focus {
+  border: 2px solid #2F78CA;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.c4:hover {
+  cursor: pointer;
+  border: 2px solid #2F78CA;
+}
+
+.c4:active {
+  cursor: pointer;
+}
+
+.c4:disabled {
+  cursor: default;
+  opacity: 0.6;
+  border: 2px solid transparent;
+}
+
+.c5 {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: 8px;
+  text-align: right;
+  width: 24px;
+  color: #636363;
+}
+
+<div
+  className="c0"
+  id="anId"
+  onKeyDown={[Function]}
+>
+  <img
+    alt=""
+    className="c1"
+    src="menu-status"
+  />
+  <textarea
+    aria-label="customStatusText-{\\"customStatusText\\":\\"An custom status\\",\\"remainingCharacters\\":84}"
+    aria-live="polite"
+    className="c2"
+    id="customStatus"
+    name="customStatus"
+    onChange={[Function]}
+    value="An custom status"
+  />
+  <div
+    className="c3"
+  >
+    <button
+      className="c4"
+      disabled={false}
+      id="customStatusButtonSave"
+      onClick={[Function]}
+    >
+      save
+    </button>
+    <button
+      className="c4"
+      id="customStatusButtonCancel"
+      onClick={[Function]}
+    >
+      cancel
+    </button>
+    <span
+      className="c5"
+    >
+      84
+    </span>
+  </div>
+</div>
+`;
+
+exports[`<CustomStatus /> Renders in the initial state 1`] = `
+.c0 {
+  padding: 4px 12px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: 190px;
+  width: 100%;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: left;
+  -webkit-justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
+  border: none;
+  width: 100%;
+  font-size: 12px;
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.c0:focus {
+  background-color: #2F78CA4d;
+}
+
+.c0:hover {
+  cursor: pointer;
+  background-color: #2F78CA1a;
+  -webkit-transition: 0s;
+  transition: 0s;
+}
+
+.c0:active {
+  cursor: pointer;
+  background-color: #2F78CA80;
+}
+
+.c0 p {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.c0 img {
+  margin-right: 8px;
+  padding-top: 1px;
+  max-width: 14px;
+  max-height: 14px;
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  color: #000000de;
+}
+
+.c2 {
+  color: #000000;
+}
+
+.c3 {
+  color: #000000a6;
+  margin-left: 3px;
+  display: inline-block;
+}
+
+<button
+  className="c0"
+  disabled={false}
+  id="anId"
+  onClick={[Function]}
+>
+  <img
+    alt=""
+    src="menu-status"
+  />
+  <div
+    className="c1"
+  >
+    <p
+      className="c2"
+    >
+      setCustomStatus
+    </p>
+    <p
+      className="c3"
+    />
+  </div>
+</button>
+`;

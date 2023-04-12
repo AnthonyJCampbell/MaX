@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>presence-dnd</title>
+    <g id="presence-dnd" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="50" cy="50" r="50"></circle>
+        <circle id="Oval" fill="#D0021B" cx="50" cy="50" r="40"></circle>
+        <g transform="translate(14.000000, 50.000000)" id="Line-6" stroke="#FFFFFF" stroke-linecap="square" stroke-width="12.5">
+            <line x1="0.25" y1="0.25" x2="69.75" y2="0.25"></line>
+        </g>
+    </g>
+</svg>

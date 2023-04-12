@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="13px" viewBox="0 0 13 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>menu-keypad</title>
+    <g id="menu-keypad" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#2F78CA" cx="2.5" cy="2.5" r="1.5"></circle>
+        <circle id="Oval" fill="#2F78CA" cx="6.5" cy="2.5" r="1.5"></circle>
+        <circle id="Oval" fill="#2F78CA" cx="10.5" cy="2.5" r="1.5"></circle>
+        <circle id="Oval" fill="#2F78CA" cx="2.5" cy="6.5" r="1.5"></circle>
+        <circle id="Oval-Copy" fill="#2F78CA" cx="2.5" cy="10.5" r="1.5"></circle>
+        <circle id="Oval" fill="#2F78CA" cx="6.5" cy="6.5" r="1.5"></circle>
+        <circle id="Oval-Copy-2" fill="#2F78CA" cx="6.5" cy="10.5" r="1.5"></circle>
+        <circle id="Oval" fill="#2F78CA" cx="10.5" cy="6.5" r="1.5"></circle>
+        <circle id="Oval-Copy-3" fill="#2F78CA" cx="10.5" cy="10.5" r="1.5"></circle>
+    </g>
+</svg>

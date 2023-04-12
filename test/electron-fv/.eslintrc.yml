@@ -1,0 +1,7 @@
+# Copyright 2021 Metaswitch Networks - Highly Confidential Material
+env:
+  node: true
+rules:
+  # Some tests use helper functions to run their expects. ESLint can't tell so stop it from checking
+  # every test has an expect
+  jest/expect-expect: off

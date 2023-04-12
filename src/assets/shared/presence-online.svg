@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="100px" viewBox="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>presence-online</title>
+    <g id="presence-online" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <circle id="Oval" fill="#FFFFFF" cx="50" cy="50" r="50"></circle>
+        <circle id="Oval" fill="#0E8A17" cx="50" cy="50" r="40"></circle>
+        <g transform="translate(30.000000, 25.000000)" id="Line-6" stroke="#FFFFFF" stroke-linecap="square" stroke-width="12.5">
+            <line x1="7.76992245" y1="20.6265242" x2="62.1421356" y2="20.4497475" transform="translate(35.019922, 20.376524) rotate(-45.000000) translate(-35.019922, -20.376524) "></line>
+            <line x1="8.75341815" y1="43.0008928" x2="8.67840918" y2="22.3180195" transform="translate(8.503418, 32.750893) rotate(-45.000000) translate(-8.503418, -32.750893) "></line>
+        </g>
+    </g>
+</svg>
